@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+    Записи автора {{ author.get_full_name }}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        {% include "posts/author_block.html" with author=author post_count=paginator.count %}
+        <div class="col-md-9">
+            {% if page %}
+                {% for post in page %}
+                    {% include "posts/post_block.html" with author=author post=post %}
+                {% endfor %}
+            {% else %}
+                {% include "posts/post_block.html" with author=author %}
+            {% endif %}
+            {% if page.has_other_pages %}
+                {% include "posts/paginator.html" with items=page paginator=paginator %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}
+

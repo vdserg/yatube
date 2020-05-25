@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}
+    Записи автора {{ author.get_full_name }}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        {% include "posts/author_block.html" with author=author post_count=post_count %}
+        <div class="col-md-9">
+            {% if post %}
+                {% include "posts/post_block.html" with author=author post=post %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

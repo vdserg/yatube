@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}
+    {{ action }} пост
+{% endblock %}
+{% block content %}
+    {% if action == "Опубликовать" %}
+        {% include "posts/post_form.html" with title="Новый пост" action=action %}
+    {% elif action == "Редактировать" %}
+        {% include "posts/post_form.html" with title="Редактировать пост" action=action %}
+    {% endif %}
+{% endblock %}
